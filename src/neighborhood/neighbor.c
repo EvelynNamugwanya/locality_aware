@@ -63,7 +63,8 @@ int init_communication(const void* sendbuffer,
         int* n_request_ptr,
         MPI_Request** request_ptr)
 {
-    int ierr, start, size;
+    int ierr = MPI_SUCCESS;
+    int start, size;
     int send_size, recv_size;
 
     char* send_bufferfer = (char*) sendbuffer;
@@ -126,10 +127,7 @@ int init_communicationw(const void* sendbuffer,
         int* n_request_ptr,
         MPI_Request** request_ptr)
 {
-    int ierr;
-
-    char* send_bufferfer = (char*) sendbuffer;
-    char* recv_bufferfer = (char*) recvbuffer;
+    int ierr = MPI_SUCCESS;
 
     MPI_Request* requests;
     *n_request_ptr = n_recvs+n_sends;
@@ -277,8 +275,6 @@ int MPIX_Neighbor_alltoallw_init(
 
     const char* send_bufferfer = (const char*)(sendbuffer);
     char* recv_bufferfer = (char*)(recvbuffer);
-    const int* send_bufferfer_int = (const int*)(sendbuffer);
-    int* recv_bufferfer_int = (int*)(recvbuffer);
 
     for (int i = 0; i < outdegree; i++)
     {
@@ -326,8 +322,6 @@ int MPIX_Neighbor_locality_alltoallv_init(
         MPI_Info info,
         MPIX_Request** request_ptr)
 {
-
-    int tag = 304591;
     int indegree, outdegree, weighted;
     MPI_Dist_graph_neighbors_count(
             comm->neighbor_comm, 
@@ -472,8 +466,6 @@ int MPIX_Neighbor_part_locality_alltoallv_init(
         MPI_Info info,
         MPIX_Request** request_ptr)
 {
-
-    int tag = 304591;
     int indegree, outdegree, weighted;
     MPI_Dist_graph_neighbors_count(
             comm->neighbor_comm, 

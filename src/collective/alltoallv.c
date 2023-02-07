@@ -37,6 +37,8 @@ int MPI_Alltoallv(const void* sendbuf,
             locality_comm);
 
     MPIX_Comm_free(locality_comm);
+
+    return MPI_SUCCESS;
 }
 
 int MPIX_Alltoallv(const void* sendbuf,

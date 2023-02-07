@@ -1,7 +1,6 @@
-#include "alltoall.h"
+#include "collective.h"
 #include <string.h>
 #include <math.h>
-#include "utils.h"
 
 // TODO : Add Locality-Aware Bruck Alltoall Algorithm!
 // TODO : Change to PMPI_Alltoall and test with profiling library!
@@ -9,7 +8,7 @@
 /**************************************************
  * Locality-Aware Point-to-Point Alltoall
  *  - Aggregates messages locally to reduce 
- *      non-local communciation
+ *      non-local communication
  *  - First redistributes on-node so that each
  *      process holds all data for a subset
  *      of other nodes
@@ -35,8 +34,9 @@ int MPI_Alltoall(const void* sendbuf,
             recvbuf, recvcount, recvtype, locality_comm);
 
     MPIX_Comm_free(locality_comm);
-}
 
+    return MPI_SUCCESS;
+}
 
 int MPIX_Alltoall(const void* sendbuf,
         const int sendcount,

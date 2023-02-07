@@ -332,7 +332,7 @@ void map_procs_to_nodes(LocalityComm* locality, const int orig_num_msgs,
         local_proc = local_num_procs - 1;
         inc = -1;
     }
-    for (int i = 0; i < msg_nodes.size(); i++)
+    for (size_t i = 0; i < msg_nodes.size(); i++)
     {
         node = msg_nodes[i];
         msg_node_to_local[node] = local_proc;
@@ -691,11 +691,11 @@ void form_global_comm(CommData* local_data, CommData* global_data,
     MPI_Comm_rank(mpix_comm->local_comm, &local_rank);
     MPI_Comm_size(mpix_comm->local_comm, &local_num_procs);
     int num_nodes = mpix_comm->num_nodes;
-    int rank_node = mpix_comm->rank_node;
+    // int rank_node = mpix_comm->rank_node;
 
     int node_idx;
     int start, end, idx;
-    int ctr, node, size;
+    int node, size;
 
     node_sizes.resize(num_nodes, 0);
 

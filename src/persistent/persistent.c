@@ -7,7 +7,8 @@
 // 3. Start global
 int MPIX_Start(MPIX_Request* request)
 {
-    int ierr, idx;
+    int ierr = MPI_SUCCESS;
+    int idx;
 
     // Local L sends sendbuf
     if (request->local_L_n_msgs)
@@ -45,7 +46,8 @@ int MPIX_Start(MPIX_Request* request)
 // TODO : Currently ignores the status!
 int MPIX_Wait(MPIX_Request* request, MPI_Status* status)
 {
-    int ierr, idx;
+    int ierr = MPI_SUCCESS;
+    int idx;
 
     char* recv_buffer = NULL;
     int recv_size = 0;
